@@ -25,13 +25,17 @@ class Fib extends Component {
     });
   }
 
-  handleSubmit = async event => {
+   handleSubmit = async event => {
     event.preventDefault();
 
     await axios.post('/api/values', {
       index: this.state.index
     });
     this.setState({ index: '' });
+    this.fetchIndexes();
+    this.renderSeenIndexes();
+    this.fetchValues();
+    this.renderValues();
   };
 
   renderSeenIndexes() {
