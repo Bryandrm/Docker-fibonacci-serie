@@ -5,16 +5,16 @@ services:
     - docker
 
 before_install:
-    - docker build -t fibonacciClientTest -f ./client/Dockerfile.dev ./client
+    - docker build -t fibonacciclienttest -f ./client/Dockerfile.dev ./client
 
 script:
-    - docker run -e CI=true FibonacciClientTest npm test -- --coverage
+    - docker run -e CI=true fibonacciclienttest npm test -- --coverage
 
 after_succes:
-    - docker build -t fibonacciClient ./client
-    - docker build -t fibonacciNginx ./nginx
-    - docker build -t fibonacciServer ./server
-    - docker build -t fibonacciWorker ./worker
+    - docker build -t fibonacciclient ./client
+    - docker build -t fibonaccinginx ./nginx
+    - docker build -t fibonacciserver ./server
+    - docker build -t fibonacciworker ./worker
 
     #log in to the docker cli
 
@@ -22,7 +22,7 @@ after_succes:
 
     #push images to docker hub
 
-    - docker push fibonacciClient
-    - docker push fibonacciNginx
-    - docker push fibonacciServer
-    - docker push fibonacciWorker
+    - docker push fibonacciclient
+    - docker push fibonaccinginx
+    - docker push fibonacciserver
+    - docker push fibonacciworker
