@@ -11,10 +11,10 @@ script:
     - docker run -e CI=true fibonacciclienttest npm test -- --coverage
 
 after_succes:
-    - docker build -t Bryandrm/fibonacciclient ./client
-    - docker build -t Bryandrm/fibonaccinginx ./nginx
-    - docker build -t Bryandrm/fibonacciserver ./server
-    - docker build -t Bryandrm/fibonacciworker ./worker
+    - docker build -t bryandrm/fibonacciclient ./client
+    - docker build -t bryandrm/fibonaccinginx ./nginx
+    - docker build -t bryandrm/fibonacciserver ./server
+    - docker build -t bryandrm/fibonacciworker ./worker
 
     #log in to the docker cli
 
@@ -22,7 +22,7 @@ after_succes:
 
     #push images to docker hub
 
-    - docker push Bryandrm/fibonacciclient
-    - docker push Bryandrm/fibonaccinginx
-    - docker push Bryandrm/fibonacciserver
-    - docker push Bryandrm/fibonacciworker
+    - docker push bryandrm/fibonacciclient
+    - docker push bryandrm/fibonaccinginx
+    - docker push bryandrm/fibonacciserver
+    - docker push bryandrm/fibonacciworker
