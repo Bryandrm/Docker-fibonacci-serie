@@ -1,0 +1,37 @@
+{
+    "AWSEBDockerrunVersion":2,
+    "containerDefinitions":[
+        {
+            "name": "client",
+            "image": "bryandrm/fibonacciclient",
+            "hostname": "client",
+            "essential": false
+        }, 
+        {
+            "name": "server",
+            "image": "bryandrm/fibonacciserver",
+            "hostname": "api",
+            "essential": false
+        }, 
+        {
+            "name": "worker",
+            "image": "bryandrm/fibonacciworker",
+            "hostname": "worker",
+            "essential": false
+        }, 
+        {
+            "name": "nginx",
+            "image": "bryandrm/fibonaccinginx",
+            "hostname": "nginx",
+            "essential": true,
+            "portMappings": [
+                {
+                 "hostPort":80,
+                 "containerPort":80   
+                }
+            ],
+            "links": ["client","server"]
+
+        }
+    ]
+}
